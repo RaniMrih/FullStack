@@ -1,0 +1,97 @@
+.label1{
+  font-weight: bold;
+  font-size: 20px;
+  font-family:  Tahoma, sans-serif;
+  color: white;
+
+}
+
+.box1{
+  
+  width:300px; 
+   margin-top: 30%; 
+   padding: 40px; 
+  position: absolute; 
+   /* top: 60%;  */
+  left: 25%; 
+   transform: translate(-50%,-50%);
+   text-align: center;
+      border: 1px solid rgb(153, 153, 153);
+      border-radius: 20px;
+      box-shadow: 10 10px 12px -1px black;
+      background-color: #f1f1f127;
+      /* box-shadow: .8px .9px 3px black;  */
+      transition:  box-shadow .5s ease-out;
+     
+  
+  }
+  .box1:hover{
+      box-shadow: 40px 40px 60px black; 
+      transition:  box-shadow .4s ease-in;
+  }
+  
+  
+.box1 input[type="text"], .box1 input[type="password"]{
+  border:0;
+  background: rgba(255, 255, 255, 0.541);
+  display: block;
+  margin: 20px auto;
+  margin-top: 0%;
+  text-align: center;
+  border: 2px solid #3498db; 
+  outline: none;
+  width: 350px;
+  height: 40px;
+  /* color: white; */
+  text-align: center;
+  border-radius: 24px;
+  transition: 0.25s;
+  font-weight: 500;
+  font-family:  Tahoma, sans-serif;
+}
+
+.box1 input[type="text"]:hover, .box1 input[type="password"]:hover{
+   
+  width: 400px;
+  border-color: #2ecc71;
+  background: rgba(255, 255, 255, 0.541);
+  color: black;
+}
+
+.box1 button[type="button2"]{
+  border:0;
+  /* padding: 14px 40px; */
+  background: #2ecc71;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71; 
+  outline: none;
+  width: 200px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  border-radius: 24px;
+  transition: 0.25s;
+  font-weight: 500;
+  cursor: pointer;
+  font-family:  Tahoma, sans-serif;
+}
+.box1 button[type="button2"]:hover{
+  border:0;
+  /* padding: 14px 40px; */
+  background: #1c8d4b;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71; 
+  outline: none;
+  width: 270px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  border-radius: 24px;
+  transition: 0.25s;
+  font-weight: 500;
+  cursor: pointer;
+}
