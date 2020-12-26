@@ -1,0 +1,5 @@
+To start React Project need command "npm start" on my-app folder.
+need to start server_project3 with command "node server_project3".
+server on port 5000
+react on port 3000 in Chrome.
+DataBase works with Xampp Appache and URL : "http://localhost/phpmyadmin/sql.php?server=1&db=project-3&table=users&pos=0"
