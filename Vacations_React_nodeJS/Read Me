@@ -1,4 +1,4 @@
-To start React Project need command "npm start" on my-app folder.
+To start React Project need command "npm start" on my-app folder after installing node_modules for react and node JS
 need to start server_project3 with command "node server_project3".
 server on port 5000
 react on port 3000 in Chrome.
