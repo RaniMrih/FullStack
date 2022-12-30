@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+    <!-- לינק לאייקונים-->
+
+    <style>
+        body {
+            background-image: url(tile.jpg);
+            font-weight:bold;
+        }
+        .div_title {
+            text-align: center;
+            padding: 20px;
+        }
+        .text_rows {
+            text-align: center;
+        }
+        #text_area {
+            background-image: url(formbg.jpg);
+            line-height:2;
+            padding-top:20px;
+            padding-left: 80px;
+            text-align: left;
+        }
+        #date1{
+            float: left;
+        }
+        .my_petek1{
+            text-align: left;
+            padding-left: 3px;
+            padding-top: 20px;
+            float:left;
+            background-image: url(notebg.png);
+            height:250px;
+            width:160px;
+            margin: 15px;    
+        }
+        .fade_in{
+            animation: fadeIn 4s;
+        }
+        @keyframes fadeIn{
+            from{opacity: 0;}
+            to{opacity: 1;}   
+        }  
+        .myIcon{
+            display: inherit; 
+            text-align: right;
+        }
+        .myIcon:hover{
+        color: red;
+        font-size: 17px; 
+        text-align: right; 
+        font-weight: bold;  
+        }
+        #mydiv{
+            font-size: 30px;     
+        }
+        .my_petek_icon{
+            height: 20px;
+        }
+        .datetime{
+            font-size: 20px
+            
+        }
+        .my_petek_meddle{
+            height: 160px;
+            
+        }
+        .my_petek_meddle2{
+            height: 160px;
+            overflow:scroll;
+        }
+        .my_petek_bottom{
+            height: 50px;    
+        }
+    </style>
+</head>
+
+<body class="container">
+    <div class="main_div">
+        <div class="div_title row offset-4 ">
+            <img src="title.png">
+        </div>
+        <div class="text_rows mt-2 row offset-2 ">
+            <textarea rows="9" cols="88" id="text_area" value="">
+        </textarea>
+        </div>
+
+        <div class="row offset-3  p-3 col-9 datetime">
+            Date:
+            <input id="date1" type="date" name="bday" value="" min="2019-01-01" max="2019-12-31">
+            <div class="offset-1"></div>
+            Time:
+            <input id="time1" class="col-2" type="time" value="">
+        </div>
+        <div class="row">
+            <div class="offset-3 pl-5 mb-2">
+                <h2> Local Time :</h2>
+            </div>
+            <div id="mydiv" class=""> </div>
+        </div>
+        <div class="row offset-3 pl-4">
+            <div class="col-8">
+                <button type="button" class="btn btn-danger col-5" onclick="clear_form()">מחק טופס</button>
+                <button type="button" class="btn btn-info col-5" onclick="insert_arr() ">אשר טופס</button>
+            </div>
+        </div>
+        <div class="row">
+            <div id="my_petek">
+            </div>
+        </div>
+    </div>
+    <script>
+        //-----------------------------------------------------------------------------------------------------check if there is data at local storage---------------------------------------//       
+        if (localStorage.petek) {
+            arr = JSON.parse(localStorage.petek)
+            print_petek()
+        } else {
+            arr = []
+        }
+        //-------------------------------------------------------------------------------------------------get date and time to display local time----------------------------//
+        var x = new Date()
+        var x1 = x.getMonth() + 1 + "/" + x.getDate() + "/" + 2019;
+        x1 = x1 + " - " + x.getHours() + ":" + x.getMinutes() + ":" + x.getSeconds();
+        document.getElementById('mydiv').innerHTML = x1;
+        //----------------------------------------------------------------------------------------------------get date and time to compare ---------------------------------//
+        var y = new Date()
+        var y1 = 2019 + "-" + y.getMonth() + 1 + "-" + y.getDate();
+        var y2 = y.getHours() + ":" + y.getMinutes();
+        document.getElementById('date1').innerHTML = y1;
+        //----------------------------------------------------------------------------------------insert object to array with text, date and time ------------------------------//
+        function insert_arr() {
+            obj = {
+                inputtext: text_area.value,
+                date: date1.value,
+                time: time1.value,
+            }
+
+            var chackall = obj.date + " " + obj.time;
+            var nowdate = new Date();
+            console.log(Date.parse(chackall), Date.now())
+
+            if (Date.parse(chackall) <= Date.now()) { //-------------------------------------------------------------check that date not passed----------------------------//
+                alert("can't enter past date");
+            } else if (date1.value == "" || time1.value == "" || text_area.value == "") { //-------------------------check if entered all fields ---------------------------//
+                alert("you must enter all fields")
+            } else { //--------------------------------------------------------------------------------------if date and time valide insert to arr--------------------------//
+                arr.push(obj)
+                localStorage.petek = JSON.stringify(arr);
+                text_area.value = ""
+                date1.value = ""
+                time1.value = ""
+                print_petek()
+            }
+        }
+
+        function clear_form() { //--------------------------------------------------------------------------------------clear form after insert arr-------------------------------//
+            text_area.value = ""
+            date1.value = ""
+            time1.value = ""
+        }
+        //--------------------------------------------------------------------------------------------------------Print notes-------------------------------------------------------//
+        function print_petek() {
+            str = "";
+            for (i = 0; i < arr.length; i++) {
+                str += "<div class='my_petek1 fade_in'>"
+                str += "<div class='my_petek_icon'>"
+                str += '<i class="far fa-times-circle myIcon" onclick=remove_petek(' + i + ')></i>'
+                str += "</div>"
+                console.log(arr[i].inputtext.length)
+
+                if (arr[i].inputtext.length < 20 && arr[i].inputtext.length != 8) //--------------------------------------אם הטקסט קטן מ 30 תדפיס פתק בלי סקרול אחרת תוסיף סקרול
+                {
+                    str += "<div class='my_petek_meddle'>";
+                } else {
+                    str += "<div class='my_petek_meddle2'>"
+                }
+                str += `<p > ${ arr[i].inputtext} </p>`;
+                str += "</div>";
+                str += "<div class='my_petek_bottom'>"
+                str += `<h6> ${arr[i].date} <h6>`;
+                str += `<h6> ${arr[i].time} <h6>`;
+                str += "</div>";
+                str += "</div>";
+            }
+            // console.log(str)
+            my_petek.innerHTML = str
+        }
+
+        function remove_petek(i) { //--------------------------------------------------------------------------------------------------splice a note and print again---------//
+            // console.log(i)
+            arr.splice(i, 1);
+            localStorage.clear
+            localStorage.petek = JSON.stringify(arr);
+            arr = JSON.parse(localStorage.petek)
+            print_petek()
+        }
+    </script>
+</body>
+
+</html>
