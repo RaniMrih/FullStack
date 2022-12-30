@@ -1,0 +1,21 @@
+.embed-responsive .card-img-top {
+object-fit: cover;
+}
+
+.Header{
+text-align:center;
+font-weight: bold;
+border-radius: 10px;
+font-family: 'Courier New', Courier, monospace;
+}
+body{
+    font-family:  Tahoma, sans-serif;
+    background: url('https://www.coremedicalgroup.com/hubfs/Core%20Medical%20June%202018/Home%20Page/banner_image.png');    
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    min-height: 100%;
+    }
+
+
+

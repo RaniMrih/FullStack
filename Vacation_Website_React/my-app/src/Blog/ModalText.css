@@ -1,0 +1,11 @@
+.myIconA{
+    color:rgb(148, 148, 250);
+}
+.myIconA:hover{
+    color: rgba(9, 177, 255, 0.623);
+    
+}
+
+.myIconB{
+float: left;
+}
