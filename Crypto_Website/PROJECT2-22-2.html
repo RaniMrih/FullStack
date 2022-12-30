@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-------------------------------JQUERY+AJAX------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!-------------------------------JQUERY+AJAX------------------------------->
+    <!-- ----------------------------Bootstrap CSS------------------------------>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <!------------------------------Bootstrap CSS-------------------------------->
+    <!------------------------------Bootstrap JS-------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <!------------------------------Bootstrap JS------------------------------>
+    <!------------------------------- toggle --------------------------------->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!------------------------------- toggle --------------------------------->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="PROJECT_CSS_2.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <!-- <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script> -->
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script type="text/javascript" src="jscript/graph.js"></script>
+</head>
+     <body>
+           
+        <div class="row crypto_div sticky-top">                    
+            <div class="col-6 crypto_div1">Cryptonite</div>
+            <div class="col-6"></div>
+            <!-- <div class="crypto_div2 col-6"><img style="width:410px ; height:150px" src=coins.JPEG></div>              -->
+        </div>         
+    </div>             <!----------------------------------------Nav Bar------------------------------------------------>
+        
+        <div class="row">
+        <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar navbar-light mb-1" style="background-color:#423f3f; border-radius: 5px;" >
+            <button type="button" class="btn btn-primary" onclick="Home()">Home</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>   
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">   
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-primary ml-1" onclick="LiveReports()" href="#">Live reports</button>
+                    </li>   
+                    <li class="nav-item">
+             <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#exampleModalLong">About</button>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input type="text" value="" id="srch1" class="form-control mr-sm-2" style="width: 300px;"  placeholder="Search" list="datalist1">
+                    <button class="btn btn btn-primary" type="button" onclick="searchcard()">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+</div>
+    <datalist id="datalist1">                        <!----------------------------------search box div------------------------------->
+</datalist>
+                 <div class="row offset-4">           <!----------------------------------- spinner div------------------------------->
+                    <div class="spinner">
+                  
+                    <div class="mt-5 offset-4 loader"></div>    
+                    <h2 class="pt-2 pl-5 ml-2">Loading please wait ....</h2>  
+                </div>
+            </div>
+            <div class="row">
+                <div id="coin_div" class="offset-1 col-10" ></div>   <!------------------------Coin cards div-------------------------->
+            </div>
+                       
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">About me</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>                                                <!-----------------------About botton modal 1------------------->
+      <div class="modal-body">
+        Hi,
+        My name is Rani Mrih , i'm a student in <br>
+        John Briuse in a full stack course and <br>
+        this is my second project<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <div id="modal-2"></div>                            <!-----------------------modal 2--------------------------------------->
+        <div id="modal-3"></div>                            <!-----------------------modal 3--------------------------------------->        
+                                                            
+        <div class="row">                                   <!---------------------charts div-------------------------------------->
+            <div class="ml-4" id="chartContainer" style="height: 500px; width: 97%; background-color: none;"></div>
+            </div>  
+        </div>   
+    
+    <script>
+        var CoinsArr = [];
+        var cardstr = '';
+        var InfoArr = [];
+        var CollapseStr = '';
+        var CollapseStr1="";
+        var ToggleArr = [];
+        var srch="";
+        var mod="";
+        var mod1="";
+        var Api3_Arr=[];
+        var str3="";
+        var NewArray=[]
+        var index;
+        var LocalToggleArr=[];
+        
+        function StartSpiner() {                                //---------------start spinner-------------//
+            $('#chartContainer').hide();  
+            $('#coin_div').hide();
+            $('.spinner').show();
+        }
+
+        function EndSpinner() {                                  //---------------end spinner-------------//
+            $('.line-chart').hide(); 
+            $('.spinner').hide();
+            $('#coin_div').show();
+        }
+    
+        getapi1();
+  
+        function LiveReports(){                                  //------------------live reports----------//
+          
+            if (ToggleArr.length==0){
+            alert ("You must choose at least 1 coin")           //-----cant show empty reports-------//
+            }
+            else{
+            $('#coin_div').hide();
+            $('#chartContainer').show();                         //---else go to Api3 get value-----//
+            getapi3()
+            }  
+            }
+          
+        function getapi3(){    
+            Api3_Arr=[]                                          //--------------Api for live reports-----------//
+            for(z=0;z<ToggleArr.length;z++){
+                Api3_Arr.push(ToggleArr[z].name.toUpperCase())              
+            }
+            console.log("Api3_Arr",Api3_Arr)
+            var Url3 =`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Api3_Arr}&tsyms=USD`  
+            $.ajax({
+                type: 'GET',
+                datatype: 'json',
+                async: false,
+                url: Url3,
+                success: function (data) {
+                  Response = data;
+                 console.log("Response",Response);
+                 localStorage.Response = JSON.stringify(Response); 
+                    LiveReports1()               
+                },
+                error: function (err) {
+                    console.log("error : ", error);
+                }
+            });
+        }
+      
+        function Home(){                                         //--------------------------go home-------------//
+            $('#chartContainer').hide(); 
+            $('#coin_div').hide().slideDown(5000);
+        }
+      
+        function getapi1() {                                    //------------------api1 to bring 100 coins-------------------//
+            var CardsUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=100&page=1`
+            StartSpiner();
+            $.ajax({
+                type: 'GET',
+                datatype: 'json',
+                async: false,
+                url: CardsUrl,
+                success: function (data) {
+                    for (let i = 0; i < 50; i++) {       //-------------put 100 back---------------------------//
+                        CoinsArr[i] = data[i];
+                    }
+                    EndSpinner()
+                    GetCard();
+                },
+                    error: function (error) {
+                    console.log("error : ", error);
+                }
+            });           
+        }
+
+        function Getapi2(k) {
+            var baseUrl = `https://api.coingecko.com/api/v3/coins/${CoinsArr[k].id}`;
+            StartSpiner();
+            $.ajax({
+                type: 'GET',
+                datatype: 'json',
+                async: false,
+                url: baseUrl,
+                success: function (data) {
+                    InfoArr[k] = data;
+                    EndSpinner()
+                   
+                },
+                error: function (err) {
+                    console.log("error : ", error);
+                }
+            });
+        }
+        
+        function GetCard() {                                 //-----------------------------cards function-------------//
+            if (localStorage.LocalToggleArr) {
+                LocalToggleArr = JSON.parse(localStorage.LocalToggleArr)   //------bring from local storage the saved coins------//
+               }                                            
+            $.each(CoinsArr, function (k) {
+                cardstr+=`<div class='col-lg-4 col-md-12 col-sm-12 coin-card'>`;
+                cardstr+=`<div class="coin-card-left col-8 ">`
+                cardstr+=`<h5>Name : ${CoinsArr[k].name}</h5>`;
+                cardstr+=`<h6 class="card-text">Symbol : ${CoinsArr[k].symbol}</h6>`;
+                cardstr+=`</div>`
+                cardstr+=`<div class="coin-card-right col-4">`
+                cardstr+='<label class="switch">'               
+                cardstr+=`<input type="checkbox" id="${CoinsArr[k].name}" name="${CoinsArr[k].symbol}" onchange="toggleClick(this)">`    
+                cardstr+='<span class="slider round">'
+                cardstr+='</span>'
+                cardstr+='</label>'
+                cardstr+=`</div>`
+                cardstr+= `<button class="btn btn-primary ml-5 " type="button" data-toggle="collapse" data-target="#OpenInfo${k}" aria-expanded="false" aria-controls="collapseExample">More Info</button>`;
+                cardstr += `<div id="OpenInfo${k}" class="collapse">`; //collapse
+                GetCollapse(k);
+                cardstr += `<div class="collapser ml-5">${CollapseStr}</div>`;
+                cardstr += `</div>`; //end collaps
+                cardstr += `</div>`;
+                cardstr += `<div class="col-4">`;
+                cardstr += ` </div>`;
+                cardstr += ` </div>`;
+                cardstr += ` </div>`;
+                cardstr += `</div>`;
+                cardstr += `</div>`;
+            });
+            // $('#coin_div').html(cardstr).show('slow');
+            $("#coin_div").append(cardstr).hide().slideDown(5000);
+            checkif_on_off()
+            fill_search()
+        }
+        // localStorage.InfoArr = JSON.stringify(InfoArr);
+//--------------------------------------------------------------------------------------------------------------------//
+         function checkif_on_off(){     //-------------------check button status on load On/Off---------------------//
+           for (i=0;i<CoinsArr.length;i++){
+               for(x=0;x<LocalToggleArr.length;x++){
+               if(LocalToggleArr[x]===CoinsArr[i].symbol){
+                $(`input[name=${CoinsArr[i].symbol}]`).prop("checked", true); 
+                element=document.getElementById(CoinsArr[i].name);
+                ToggleArr.push(element);
+                console.log("ToggleArr =",ToggleArr)
+               }}
+           }  
+         }                                     
+          //----------------------------------------------------- function toggleClick(k) from home page-------------------------------------//  
+        function toggleClick(element)
+          { 
+             if (ToggleArr.length < 5) {           
+                if(element.checked)
+                    {
+                    $(`input[name=${element.name}]`).prop("checked", true);
+                    ToggleArr.push(element);  
+                    LocalToggleArr.push(element.name)            
+                    console.log("ToggleArr = " , ToggleArr)                    
+                    console.log("LocalToggleArr = " , LocalToggleArr)
+                     }
+                else {
+                    $(`input[name=${element.name}]`).prop("checked", false);
+                    index = ToggleArr.findIndex((x) => x.name === element.name);           //-----find index to splice---//
+                    ToggleArr.splice(index,1) 
+                    LocalToggleArr.splice(index,1) 
+                    console.log("ToggleArr" , ToggleArr)                  
+                    console.log("LocalToggleArr = " , LocalToggleArr)
+                    }                     
+                    }              
+               
+             else if(ToggleArr.length >= 5) 
+                            {
+                        for(x=0;x<ToggleArr.length;x++){
+                            if (element.id===ToggleArr[x].id){
+                                index3 = ToggleArr.findIndex((x) => x.name === element.name);//-----find index to splice---//
+                                ToggleArr.splice(index3,1) 
+                                LocalToggleArr.splice(index3,1) 
+                                var stam=true;
+                                console.log("ToggleArr" , ToggleArr) 
+                                console.log("LocalToggleArr = " , LocalToggleArr)
+                            }
+                            }
+                            if(stam !=true){                              
+                             element.checked=false; 
+                             GetToggleModal(ToggleArr);
+                            }                            
+                            }
+                         localStorage.LocalToggleArr = JSON.stringify(LocalToggleArr);     
+                        }                       
+ //-------------------------------------------------------function toggleClick(k) from Modal ---------------------------------------------//         
+        function toggleClick2(element){
+
+                       if(element.checked){
+                        $(`input[name=${element.id}]`).prop("checked", true);
+                        ToggleArr.push(element);
+                        LocalToggleArr.push(element.id)                     
+                        console.log("ToggleArr" , ToggleArr)                       
+                        console.log("LocalToggleArr = " , LocalToggleArr)
+                        localStorage.LocalToggleArr = JSON.stringify(LocalToggleArr);  
+                     }
+                      else{
+                            for (i=0;i<CoinsArr.length;i++){
+                                   if(element.id === CoinsArr[i].symbol){ 
+                                    $(`input[name=${element.id}]`).prop("checked", false);
+                                     let index2= ToggleArr.findIndex((x) => x.name === CoinsArr[i].symbol );
+                                     ToggleArr.splice(index2,1) 
+                                     LocalToggleArr.splice(index2,1) 
+                                     console.log("ToggleArr" , ToggleArr)                                    
+                                     console.log("LocalToggleArr = " , LocalToggleArr)
+                                     localStorage.LocalToggleArr = JSON.stringify(LocalToggleArr);  
+                                   }                         
+                                }                                                                                                            
+                    }
+                    
+                    }
+//--------------------------------------------------------------More info-----------------------------------------------------------------//
+        function GetCollapse(k) {              //--------------collapse home screen-----------------------//
+            Getapi2(k);
+            // InfoArr = JSON.parse(localStorage.InfoArr)
+            CollapseStr = '';
+            CollapseStr += `<div class="mt-1 card" style="width: 90%;">`;
+            CollapseStr += `<img style="width: 60%;height:50%;" class="card-img-top ml-5 pl-5" src="${InfoArr[k].image.small}" alt="Card image cap">`;
+            CollapseStr += `<div class="card-body pl-5">`;
+            CollapseStr += `<h6 class="card-text">Coin to Dollar:${InfoArr[k].market_data.current_price.usd} $.</h6>`;
+            CollapseStr += `<h6 class="card-text">Coin to Euro: ${InfoArr[k].market_data.current_price.eur} €.</h6>`;
+            CollapseStr += `<h6 class="card-text">Coin to Shekel:${InfoArr[k].market_data.current_price.ils} ₪.</h6>`;
+            CollapseStr += `</div>`;
+            CollapseStr += `</div>`;
+        }
+
+        function GetCollapse1(a) {             //------------collapse search card--------------------------//
+            Getapi2(a);
+            CollapseStr1 = '';
+            CollapseStr1 += `<div class="mt-1 card" style="width: 90%;">`;
+            CollapseStr1 += `<img style="width: 60%;height:50%;" class="card-img-top pl-5 ml-5" src="${InfoArr[a].image.small}" alt="Card image cap">`;
+            CollapseStr1 += `<div class="card-body pl-5">`;
+            CollapseStr1 += `<h6 class="card-text">Coin to Dollar:${InfoArr[a].market_data.current_price.usd} $.</h6>`;
+            CollapseStr1 += `<h6 class="card-text">Coin to Euro: ${InfoArr[a].market_data.current_price.eur} €.</h6>`;
+            CollapseStr1 += `<h6 class="card-text">Coin to Shekel:${InfoArr[a].market_data.current_price.ils} ₪.</h6>`;
+            CollapseStr1 += `</div>`;
+            CollapseStr1 += `</div>`;
+        }
+        function fill_search(){        //---------------make data list for search------------------------------------------------//
+                srch +=`<datalist>`
+                        for(x=0; x<CoinsArr.length;x++)
+                        {
+                srch +=`<option value="${CoinsArr[x].name}"></option>`      
+                        }
+                    srch +=`</datalist>`  
+                $('#datalist1').append(srch);
+            
+        }
+ //---------------------------------------------------------search functions---------------------------------------------------------------//  
+        function searchcard() {                                                                    
+            for(a=0 ; a<CoinsArr.length ; a++){
+                    if (srch1.value == CoinsArr[a].name){
+                     var result = true;
+                    searchcard1 (a);
+                    } 
+                }  
+                    if(result != true){
+                        alert("No search found")
+                    }
+                    srch1.value="";
+                }
+//------------------------------------------------------------function Search card modal-------------------------------------------------//
+        function searchcard1(a) {              
+            $('#chartContainer').hide(); 
+            $('#coin_div').show();   
+            mod1=`<div class="modal fade" id="exampleModalLong-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">`
+            mod1+=`<div class="modal-dialog modal-dialog-centered modal-md" role="document">`
+            mod1+=`<div class="modal-content">`
+            mod1+=`<div class="modal-header">`
+            mod1+=`<h1 class="modal-title" id="exampleModalLongTitle">Search result : </h1>`
+            mod1+=`<button type="button" class="close" data-dismiss="modal" aria-label="Close">`
+            mod1+=`<span aria-hidden="true">&times;</span>`
+            mod1+=`</button>`
+            mod1+=`</div>`                                               
+            mod1+=`<div class="modal-body">`        
+            mod1 += `<div class='col-12 coin-card'>`;
+            mod1 += `<div class="coin-card-left col-8 ">`
+            mod1 += `<h4>Name : ${CoinsArr[a].name}</h4>`;
+            mod1 += `<h5 class="card-text">Symbol : ${CoinsArr[a].symbol}</h5>`;
+            mod1+=`</div>`
+            mod1+=`<div class="coin-card-right col-4">`
+            mod1+='<label class="switch">'
+     if(ToggleArr.length>0){                  //---need to check if to show on or off botton when search card----//
+        var on =false;
+          for(c=0;c<ToggleArr.length;c++){
+            if (ToggleArr[c].id==srch1.value){
+                 on=true;
+                mod1+= `<input type="checkbox" id="${ToggleArr[c].name}" name="${ToggleArr[c].symbol}"onchange="toggleClick2(this)" checked>`  
+                console.log("ToggleArr",ToggleArr)     }           
+                    }
+              if(on==false){
+                mod1+=`<input type="checkbox" id="${CoinsArr[a].name}" name="${CoinsArr[a].symbol}" onchange="toggleClick(this)">` }         
+                 }
+            else{  
+            mod1+=`<input type="checkbox" id="${CoinsArr[a].name}" name="${CoinsArr[a].symbol}" onchange="toggleClick(this)">`
+            console.log("ToggleArr",ToggleArr)
+                }                     
+            mod1+='<span class="slider round">'
+            mod1+='</span>'
+            mod1+='</label>'
+            mod1+=`</div>`
+            mod1+= `<button class="btn btn-primary ml-5 " type="button" data-toggle="collapse" data-target="#OpenInfo1${a}" aria-expanded="false" aria-controls="collapseExample">More Info</button>`;
+            mod1 += `<div id="OpenInfo1${a}" class="collapse">`; //collapse
+            GetCollapse1(a);
+            mod1 += `<div class="collapser ml-5">${CollapseStr1}</div>`;
+            mod1 += `</div>`; //end collaps
+            mod1 += `</div>`;
+            mod1 += `<div class="col-4">`;
+            mod1 += `</div>`;
+            mod1 += `</div>`;
+            mod1 += `</div>`;
+            mod1 += `</div>`;
+            mod1 += `</div>`;
+            mod1+=`</div>`
+            mod1+=`</div>`
+            mod1+=`</div>`
+            mod1+=`</div>`             
+            $('#modal-3').html(mod1);
+            $(document).ready(function(){
+            $("#exampleModalLong-3").modal('show');
+        });
+        }      
+//--------------------------------------------------function Main modal containes 5 Coins----------------------------------------------//  
+        function GetToggleModal(ToggleArr) {                              
+            mod=`<div class="modal fade" id="exampleModalLong-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">`
+            mod+=`<div class="modal-dialog modal-dialog-centered modal-md" role="document">`
+            mod+=`<div class="modal-content">`
+            mod+=`<div class="modal-header">`
+            mod+=`<h4 class="modal-title" id="exampleModalLongTitle">Remove coins and confirm</h4>`
+            mod+=`<button type="button" class="close" data-dismiss="modal" aria-label="Close">`
+            mod+=`<span aria-hidden="true">&times;</span>`
+            mod+=`</button>`
+            mod+=`</div>`                                               
+            mod+=`<div class="modal-body">`        
+                for(t=0 ; t<ToggleArr.length ; t++)
+                {              
+                mod+=`<div class="row">`;
+                    mod+=`<hr>`  
+                mod+= `<div class="coin-card-left col-8 ">`
+                mod+=`<br>`
+                mod+= `<h4>Name :${ToggleArr[t].id}</h4>`;                   
+                mod+=`</div>`
+                mod+=`<div class="coin-card-right col-4">`
+                mod+='<label class="switch">'
+                mod+=`<input type="checkbox" id="${ToggleArr[t].name}" name="${ToggleArr[t].symbol}"onchange="toggleClick2(this)" checked>`
+                mod+='<span class="slider round">'
+                mod+='</span>'
+                mod+='</label>'                     
+                mod+=`</div>`                    
+                mod+=`</div>`               
+                }
+            mod+=`</div>`
+            mod+=`<div class="modal-footer">`
+            mod+=`<button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>`
+            mod+=`</div>`
+            mod+=`</div>`
+            mod+=`</div>`
+            mod+=`</div>`
+            $('#modal-2').html(mod);
+            $(document).ready(function(){
+            $("#exampleModalLong-2").modal('show');
+        });
+        }
+      //--------------------------------------------------function of chart---------------------------------------------------------//
+        function LiveReports1(){               
+            $('#coin_div').hide();
+            $('#chartContainer').show(); 
+          //-------------------------------//
+           
+          Object.keys(Response).forEach(function (item) {             //-------for each to separate key from value-------//
+            NewArray.push(Response[item])                             //---------NewArray has the coins value in USD-------//           
+            });  
+            str3=""
+            for(z=0;z<Api3_Arr.length;z++){
+                str3+=`${Api3_Arr[z]} , `                               //----- str3 has all the coins names for title---------//
+            }
+          //------------------------------//
+         
+            var dataPoints1 = [];
+            var dataPoints2 = [];
+            var dataPoints3 = [];
+            var dataPoints4 = [];
+            var dataPoints5 = [];
+            var my_length=Api3_Arr.length;                              //-------------- Number of selected coins---------//
+            if(my_length==1){
+            var chart = new CanvasJS.Chart("chartContainer", {                    //-------------קבוע----------//
+                zoomEnabled: true,
+                title: {
+                    text: str3,
+                },
+                axisX: {
+                    title: "time every 2 secs"                                  //-------------קבוע----------//
+                },
+                axisY:{
+                    prefix: "$",
+                    includeZero: false
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                legend: {                                                        //-------------קבוע----------//
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    fontSize: 22,
+                    fontColor: "dimGrey",
+                    itemclick : toggleDataSeries
+                },
+                data: [{ 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[0],
+                    dataPoints: dataPoints1
+                    },]
+                    });
+            
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var updateInterval = 2000;
+         
+            var time = new Date;
+            
+            function updateChart(count) {
+                count = count || 1;
+                for (var i = 0; i < count; i++) {
+                    time.setTime(time.getTime()+ updateInterval);         // pushing the new values                       
+                dataPoints1.push({x: time.getTime(),y: NewArray[0].USD});//// updating legend text with  updated with y Value       
+                }           
+                for(v=0;v<my_length;v++){
+                chart.options.data[v].legendText = Api3_Arr[v];
+            }
+                chart.render();
+            }
+            updateChart(100);	
+            setInterval(function(){updateChart()}, updateInterval);
+            }
+            if(my_length==2){
+            var chart = new CanvasJS.Chart("chartContainer", {                   //-------------קבוע----------//
+                zoomEnabled: true,
+                title: {
+                    text: str3,
+                },
+                axisX: {
+                    title: "time every 2 secs"                                  //-------------קבוע----------//
+                },
+                axisY:{
+                    prefix: "$",
+                    includeZero: false
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                legend: {                                                        //-------------קבוע----------//
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    fontSize: 22,
+                    fontColor: "dimGrey",
+                    itemclick : toggleDataSeries
+                },
+
+                data: [{ 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[0],
+                    dataPoints: dataPoints1
+                    },
+                    {				
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    showInLegend: true,
+                    name:  Api3_Arr[1] ,
+                    dataPoints: dataPoints2
+                    },]
+                    });
+            
+
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var updateInterval = 2000;
+         
+            var time = new Date;
+
+            function updateChart(count) {
+                count = count || 1;
+                for (var i = 0; i < count; i++) {
+                    time.setTime(time.getTime()+ updateInterval);
+                dataPoints1.push({x: time.getTime(),y: NewArray[0].USD});   // pushing the new values
+                dataPoints2.push({x: time.getTime(),y: NewArray[1].USD});    
+                }
+                for(v=0;v<my_length;v++){                                     // updating legend text with  updated with y Value 
+                chart.options.data[v].legendText = Api3_Arr[v];
+            }
+                chart.render();
+            }
+            updateChart(100);	
+            setInterval(function(){updateChart()}, updateInterval);    // generates first set of dataPoints 
+            }
+            if(my_length==3){
+            var chart = new CanvasJS.Chart("chartContainer", {         //-------------קבוע----------//
+                zoomEnabled: true,
+                title: {
+                    text: str3,
+                },
+                axisX: {
+                    title: "time every 2 secs"                                  //-------------קבוע----------//
+                },
+                axisY:{
+                    prefix: "$",
+                    includeZero: false
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                legend: {                                                        //-------------קבוע----------//
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    fontSize: 22,
+                    fontColor: "dimGrey",
+                    itemclick : toggleDataSeries
+                },
+
+                data: [{ 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[0],
+                    dataPoints: dataPoints1
+                    },
+                    {				
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    showInLegend: true,
+                    name:  Api3_Arr[1] ,
+                    dataPoints: dataPoints2
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[2],
+                    dataPoints: dataPoints3
+                    },]
+                    });
+            
+
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var updateInterval = 2000;
+  
+            var time = new Date;
+            // starting at current time
+        
+            function updateChart(count) {
+                count = count || 1;
+                for (var i = 0; i < count; i++) {
+                    time.setTime(time.getTime()+ updateInterval);
+                 
+                // pushing the new values
+                dataPoints1.push({x: time.getTime(),y: NewArray[0].USD});
+                dataPoints2.push({x: time.getTime(),y: NewArray[1].USD});
+                dataPoints3.push({x: time.getTime(),y: NewArray[2].USD});           
+                }
+
+                // updating legend text with  updated with y Value 
+                for(v=0;v<my_length;v++){
+                chart.options.data[v].legendText = Api3_Arr[v];
+                // chart.options.data[1].legendText = " Company B  $" + yValue2; 
+            }
+                chart.render();
+            }
+            // generates first set of dataPoints 
+            updateChart(100);	
+            setInterval(function(){updateChart()}, updateInterval);
+            }
+
+            if(my_length==4){
+            var chart = new CanvasJS.Chart("chartContainer", {         //-------------קבוע----------//
+                zoomEnabled: true,
+                title: {
+                    text: str3,
+                },
+                axisX: {
+                    title: "time every 2 secs"                                  //-------------קבוע----------//
+                },
+                axisY:{
+                    prefix: "$",
+                    includeZero: false
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                legend: {                                                        //-------------קבוע----------//
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    fontSize: 22,
+                    fontColor: "dimGrey",
+                    itemclick : toggleDataSeries
+                },
+                data: [{ 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[0],
+                    dataPoints: dataPoints1
+                    },
+                    {				
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    showInLegend: true,
+                    name:  Api3_Arr[1] ,
+                    dataPoints: dataPoints2
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[2],
+                    dataPoints: dataPoints3
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[3],
+                    dataPoints: dataPoints4
+                    },]
+                    });
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var updateInterval = 2000;
+ 
+            var time = new Date;
+            // starting at current time        
+            function updateChart(count) {
+                count = count || 1;
+                for (var i = 0; i < count; i++) {
+                    time.setTime(time.getTime()+ updateInterval);                
+                // pushing the new values
+                dataPoints1.push({x: time.getTime(),y: NewArray[0].USD});
+                dataPoints2.push({x: time.getTime(),y: NewArray[1].USD});
+                dataPoints3.push({x: time.getTime(),y: NewArray[2].USD});
+                dataPoints4.push({x: time.getTime(),y: NewArray[3].USD});     
+                }
+                for(v=0;v<my_length;v++){
+                chart.options.data[v].legendText = Api3_Arr[v];
+            }
+             chart.render(); }
+            updateChart(100);	
+            setInterval(function(){updateChart()}, updateInterval);
+            }
+
+            if(my_length==5){
+            var chart = new CanvasJS.Chart("chartContainer", {         //-------------קבוע----------//
+                zoomEnabled: true,
+                title: {
+                    text: str3,
+                },
+                axisX: {
+                    title: "time every 2 secs"                                  //-------------קבוע----------//
+                },
+                axisY:{
+                    prefix: "$",
+                    includeZero: false
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                legend: {                                                        //-------------קבוע----------//
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    fontSize: 22,
+                    fontColor: "dimGrey",
+                    itemclick : toggleDataSeries
+                },
+                data: [{ 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[0],
+                    dataPoints: dataPoints1
+                    },
+                    {				
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    showInLegend: true,
+                    name:  Api3_Arr[1] ,
+                    dataPoints: dataPoints2
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[2],
+                    dataPoints: dataPoints3
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[3],
+                    dataPoints: dataPoints4
+                    },
+                    { 
+                    type: "line",
+                    xValueType: "dateTime",
+                    yValueFormatString: "$####.00",
+                    xValueFormatString: "hh:mm:ss TT",
+                    showInLegend: true,
+                    name: Api3_Arr[4],
+                    dataPoints: dataPoints5 },]});
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false; }
+                else {
+                 e.dataSeries.visible = true;}
+                chart.render();
+            }
+            var updateInterval = 2000;
+  
+            var time = new Date;
+
+            function updateChart(count) {
+                count = count || 1;
+                for (var i = 0; i < count; i++) {
+                    time.setTime(time.getTime()+ updateInterval);                
+                dataPoints1.push({x: time.getTime(),y: NewArray[0].USD});
+                dataPoints2.push({x: time.getTime(),y: NewArray[1].USD});
+                dataPoints3.push({x: time.getTime(),y: NewArray[2].USD});
+                dataPoints4.push({x: time.getTime(),y: NewArray[3].USD});
+                dataPoints5.push({x: time.getTime(),y: NewArray[4].USD});
+                }
+                for(v=0;v<my_length;v++){
+                chart.options.data[v].legendText = Api3_Arr[v];
+            }
+                chart.render();
+            }
+            // generates first set of dataPoints 
+            updateChart(100);	
+            setInterval(function(){updateChart()}, updateInterval);
+            }
+        }
+//------------------------------------------------------------------every 120 seconds refresh apis---------------------------------------------// 
+        setInterval(function() {     
+            getapi1()
+              }, 120000); 
+        
+            </script>
+        </body>
+        </html>
+
+
+
+
+  
