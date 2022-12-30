@@ -1,0 +1,198 @@
+<div class="body fade-in">
+  <div class="row">
+    <div class="col-10 topBar1 pt-3 pl-5">
+      <div>
+        <h3>Buy Online</h3>
+        <h6>Your best Online Store for all you need</h6>
+        <form class="form-inline my-2 my-lg-0">
+          <input type="text" value="" id="srch1" class="form-control mr-sm-2" style="width: 300px;"
+            placeholder="חיפוש מוצר" list="datalist" [(ngModel)]="Info.product" name="searchP">
+          <button class="btn btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter"
+            (click)="console(this)">חפש מוצר</button>
+        </form>
+        <div class="col-12 pt-4 " style="text-align: left">
+          <h2 class=""> <i class="far fa-plus-square myIconA" (click)="toggleSidebar()"></i> הוסף מוצר חדש </h2>
+        </div>
+        <datalist id="datalist">
+          <select *ngFor="let item of products">
+            <option>{{item.name}}</option>
+          </select>
+        </datalist>
+      </div>
+    </div>
+    <div class="col-2 topBar2 pt-5 pl-5">
+      <h4>Hi Admin!</h4>
+      <h6 class="pb-3">logged as : {{UserName}}</h6>
+      <button class="btn btn-outline-info" routerLink="">Log-Out</button>
+    </div>
+  </div>
+  <hr>
+  <!-----------------------------------------------------Categories------------------------------------------------------------->
+  <div class="row pb-5">
+    <div class="col-12 pt-2 " style="height: 100px;text-align: center ;color: rgba(128, 128, 128, 0.733)">
+      <h1>מומלצים</h1>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(153)">מתנות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(5)">אוכל</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(156)">משקאות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(142)">סכינים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(146)">למעשנים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(155)">משחקים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(164)">חיות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(154)">מחזיקי מפתחות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(160)">פסלים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(9)">שעונים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(144)">שעוני קיר</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(15)">טבעות</button>
+    </div>
+  </div>
+
+  <div class="row pl-2 pr-2">
+    <div *ngIf="flag ==0 ; else other_content">
+      <div id="sidebar" class="col-3 fade-in ">
+        <div>
+          <div class="pt-4 pb-4" style="text-align: center">
+            <h3> הכנס פרטי מוצר</h3>
+          </div>
+          <form class="offset-1 col-10">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Name :</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name"
+                [(ngModel)]="NewProduct.name" name="ProductName">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Product Price :</label>
+              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter price"
+                [(ngModel)]="NewProduct.price" name="ProductPrice">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Image URL :</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter img URL"
+                [(ngModel)]="NewProduct.image" name="ProductImage">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category Id :</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter category Id"
+                [(ngModel)]="NewProduct.categoryId" name="ProductId">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Description :</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Description/Sale"
+                [(ngModel)]="NewProduct.Description" name="ProductDescription">
+            </div>
+            <button type="submit" class="btn btn-primary offset-4 col-4" (click)="AddNewProduct()">הוספה</button>
+          </form>
+
+        </div>
+      </div>
+      <div id="sidebar1" class="col-12 fade-in ">
+        <div class="row ">
+          <div *ngFor="let item of products" class="col-12 col-md-3 col-m-3 fade-in ">
+            <app-card-admin [product]="item"></app-card-admin>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #other_content>
+      <div id="sidebar" class="col-3 pt-2 fade-in">
+        <div>
+          <div class="pt-4 pb-4" style="text-align: center">
+            <h3> הכנס פרטי מוצר</h3>
+          </div>
+          <form class="offset-1 col-10">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Name :</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter name"
+                [(ngModel)]="NewProduct.name" name="ProductName">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Product Price :</label>
+              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter price"
+                [(ngModel)]="NewProduct.price" name="ProductPrice">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Image URL :</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter img URL"
+                [(ngModel)]="NewProduct.image" name="ProductImage">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category Id :</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter category Id"
+                [(ngModel)]="NewProduct.categoryId" name="ProductId">
+            </div>
+            <button type="submit" class="btn btn-primary offset-4 col-4" (click)="AddNewProduct()">הוספה</button>
+          </form>
+
+        </div>
+      </div>
+      <div id="sidebar1" class="col-12 fade-in ">
+        <div class="row ">
+          <div *ngFor="let item of cat" class="col-12 col-md-3 fade-in ">
+            <app-card-admin [product]="item"></app-card-admin>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<!----------------------------------------------------- content :  Cards / shipping Adress ------------------------------------------------------------->
+<!-- modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let item of search">
+          <div class="productcard mycard3 ">
+            <app-modal [product]="item"></app-modal>
+            <!--go to modal with edit icon-->
+
+            <div class="col-12" style="height: 480px;">
+              <app-modalimage [product]="item"></app-modalimage>
+              <!--go to modal with image icon-->
+
+              <div class="card-body" style="text-align: center;">
+                <h5 class="card-title">{{item.name}}</h5>
+                <h4 class="card-title">{{item.description}}</h4>
+                <h3 class="card-title">מחיר : {{item.new_price}} ₪</h3>
+                <button type="button" class="btn btn-outline-info col-4 mt-2" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

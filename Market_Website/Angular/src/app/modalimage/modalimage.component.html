@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12 p-0 m-0">
+    <div class="container">
+      <div *ngIf="product.imgChanged ==0 ; else other_content">
+        <div *ngIf="product.description !=''">
+          <div class="tag">{{product.description}}</div>
+        </div>
+        <img src='http://www.mystor.co.il/php/{{product.image}}' class="p-0 m-0" alt="..."
+          style="width: 100%; height: 300px">
+      </div>
+      <ng-template #other_content>
+        <div *ngIf="product.description !=''">
+          <div class="tag m-2">{{product.description}}</div>
+        </div><img src='{{product.image}}' class="p-0 m-0" alt="..." style="width: 100%; height: 300px ">
+      </ng-template>
+
+
+
+      <div class="overlay">
+        <a class="icon" title="Click to change image">
+          <i class="fas fa-images" data-toggle="modal" data-target="#exampleModal" (click)="console(this)"></i>
+
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

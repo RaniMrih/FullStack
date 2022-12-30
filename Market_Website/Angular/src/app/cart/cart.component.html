@@ -1,0 +1,80 @@
+<div class="body fade-in">
+    <!-- ==============================================cart user============================================================================= -->
+
+    <div class="row">
+        <div class="col-4" style="text-align: center ; font-size: 40px">
+            <i class="fas fa-money-check-alt"></i>
+        </div>
+        <div class="col-8 pt-2">
+            <h3>העגלה שלך</h3>
+        </div>
+        <hr>
+    </div>
+    <div class="row p-2">
+        <div class="col-3" style="border: 1px rgba(128, 128, 128, 0.308) solid">
+            <h5 style="text-align: center ;  color: rgba(128, 128, 128, 0.733);">מחיר</h5>
+        </div>
+        <div class="col-3" style="border: 1px rgba(128, 128, 128, 0.308) solid">
+            <h5 style="text-align: center ;  color: rgba(128, 128, 128, 0.733) ">כמות</h5>
+        </div>
+        <div class="col-3" style="border: 1px rgba(128, 128, 128, 0.308) solid">
+            <h5 style="text-align: center ;  color: rgba(128, 128, 128, 0.733)">מוצר</h5>
+        </div>
+        <div class="col-3" style="border: 1px rgba(128, 128, 128, 0.308) solid">
+            <h5 style="text-align: center ;  color: rgba(128, 128, 128, 0.733)">תמונה</h5>
+        </div>
+        <hr>
+    </div>
+    <div *ngFor="let item of cart1" style="text-align: center">
+        <div class="Post">
+            <div class="row">
+                <div class="col-3">
+                    <h6 style="text-align: center ;  color: rgba(128, 128, 128, 0.733);">{{item.price * item.quantity}}
+                        ₪</h6>
+                </div>
+                <div class="col-3">
+                    <h6 style="text-align: center ;  color: rgba(128, 128, 128, 0.733);">{{item.quantity}} x</h6>
+                </div>
+                <div class="col-3">
+                    <h6 style="text-align: center ;  color: rgba(128, 128, 128, 0.733);">{{item.name}}</h6>
+                </div>
+                <div class="col-3">
+                    <div *ngIf="item.imgChanged == 0 ; else other_content4">
+                        <img src='http://www.mystor.co.il/php/{{item.image}}' class="" alt="..."
+                            style="width: 100%; height: 70px">
+                    </div>
+                    <ng-template #other_content4><img src='{{item.image}}' class="" alt="..."
+                            style="width: 100%;  height: 70px">
+                    </ng-template>
+                </div>
+            </div>
+            <button class="btn btn-outline-danger col-4" (click)="deleteFromCart(item)">מחק מוצר</button>
+        </div>
+        <div>
+            <hr>
+        </div>
+    </div>
+    <div>
+        <h3 style="text-align: center">₪ {{this.api.sum}} : לתשלום</h3>
+    </div>
+    <div style="text-align: center">
+        <button class="btn btn-outline-danger" (click)="FinishOrder()">בצע הזמנה</button>
+        <button class="btn btn-outline-danger ml-3" data-toggle="modal" data-target="#exampleModal5">מחק הכל</button>
+    </div>
+</div>
+<!-- ==========================================Modal delete all================================================================================= -->
+<div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="text-align: center">
+                    <h5 class="modal-title mb-4" id="exampleModalLabel">? למחוק את כל המוצרים בעגלה
+                    </h5>
+                    <button class="btn btn-secondary" data-dismiss="modal">ביטול</button>
+                    <button class="btn btn-danger ml-3" (click)="deleteOrder()" data-dismiss="modal">מחק הכל</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

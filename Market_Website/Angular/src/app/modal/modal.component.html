@@ -1,0 +1,66 @@
+<div class="pb-3">
+  <div>
+    <i class="far fa-clone myIconA mt-1 ml-1 " data-toggle="modal" data-target="#modalExamle"
+      (click)="console(this)"></i> <!-- update info icon -->
+    <div style="float:right">
+      <i class="myIconB mt-2 mr-2 fas fa-trash-alt" data-toggle="modal" data-target="#exampleModal6"
+        (click)="console(this)"></i>
+      <!--delete icon-->
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------Update info modal-------------------------------------->
+<div class="modal fade" id="modalExamle" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chang Product cotent : </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product name :</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter new Name" [(ngModel)]="Changes.productName" name="productName">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Price :</label>
+            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
+              placeholder="Enter new price " [(ngModel)]="Changes.productPrice" name="productPrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product description :</label>
+            <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp"
+              placeholder="Enter discription" [(ngModel)]="Changes.Description" name="productDescription">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="NoChanges()">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateInfo(this)">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!------------------------------------------------------------------------------------------------------------------>
+<!-- Modal delete all-->
+<div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="text-align: center">
+          <h5 class="modal-title mb-4" id="exampleModalLabel">?בטוח למחוק את המוצר הזה
+          </h5>
+          <button class="btn btn-secondary" data-dismiss="modal">ביטול</button>
+          <button class="btn btn-danger ml-3" (click)="deleteProd(this)" data-dismiss="modal">מחק הכל</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

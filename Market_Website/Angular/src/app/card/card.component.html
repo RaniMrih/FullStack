@@ -1,0 +1,51 @@
+<!---------------------------------------product card-------------------------------------------------------->
+
+<div class="productcard mt-2 mycard3">
+  <div class="col-12 p-0">
+    <!-------image type 1 not changed in DB-->
+    <div *ngIf="product.imgChanged ==0 ; else other_content">
+      <div *ngIf="product.description !=''">
+        <div class="tag m-2">{{product.description}}</div>
+      </div>
+
+      <img src='http://www.mystor.co.il/php/{{product.image}}' class="p-2" alt="..." style="width: 100%; height: 250px">
+    </div>
+    <!-------image type 2 changed in DB-->
+    <ng-template #other_content>
+      <div *ngIf="product.description !=''">
+        <div class="tag m-2">{{product.description}}</div>
+      </div>
+      <img src='{{product.image}}' class="p-2" alt="..." style="width: 100%; height: 250px">
+    </ng-template>
+    <div class="card-body" style="text-align: center;">
+      <h6 class="card-title">{{product.name}}</h6>
+      <h4 class="card-title"> ₪ מחיר : {{product.new_price}} </h4>
+      <button type="button" class="btn btn-outline-success " data-toggle="modal" data-target="#exampleModal2"
+        (click)="storeproduct(this)">הוסף
+        לעגלה</button>
+
+    </div>
+  </div>
+</div>
+<!---------------------------------------modal for quantity to add to cart-------------------------------------------------------->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document" style="text-align: center">
+    <div class="modal-content" style="text-align: center">
+      <div class="modal-header" style="text-align: center">
+        <h5 class="modal-title offset-4 col-4" id="exampleModalLabel" style="text-align: center">: בחר כמות </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="number" class="form-control offset-2 col-8" placeholder="הזמן מספר " [(ngModel)]="quantity"
+          name="kamot">
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">בטל</button>
+        <button type="button" class="btn btn-primary col-6" data-dismiss="modal" (click)="addToCart()">אישור</button>
+      </div>
+    </div>
+  </div>
+</div>

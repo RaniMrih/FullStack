@@ -1,0 +1,81 @@
+.fade-in {
+    animation: fadeIn 2S;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.topBar1 {
+
+    height: 190px;
+    color: rgba(128, 128, 128, 0.753);
+}
+
+
+.body {
+    background-color: rgba(218, 218, 218, 0.089)
+}
+
+.topBar2 {
+    height: 190px;
+    color: rgba(128, 128, 128, 0.733);
+    text-align: center;
+}
+
+.mybutton {
+    text-align: center;
+}
+
+.myIconA {
+    color: rgb(47, 143, 233);
+    font-size: 40px;
+}
+
+.myIconA:hover {
+    color: rgb(47, 66, 233);
+}
+
+/* ---------------------------------------------------------------- */
+
+#sidebar {
+
+    position: absolute;
+    display: none;
+    height: 100%;
+    left: -400px;
+}
+
+#sidebar.active {
+    /* background-color: rgba(151, 156, 160, 0.082); */
+    position: absolute;
+    display: block;
+    height: 100%;
+    left: 0px;
+    width: 25%;
+}
+
+#sidebar1 {
+    position: absolute;
+    height: 100%;
+    left: 0px;
+
+
+}
+
+
+#sidebar1.active1 {
+
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    left: 25%;
+
+
+}

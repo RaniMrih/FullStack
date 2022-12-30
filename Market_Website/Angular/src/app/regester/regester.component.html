@@ -1,0 +1,202 @@
+<div class="body fade-in">
+  <div class="row ">
+    <div class="topBar col-10 mb-5 pt-3 pl-5">
+      <div>
+        <h3>Buy Online</h3>
+        <h6>Your best Online Store for all you need</h6>
+      </div>
+    </div>
+    <div class="col-2 topBar2 pt-3 pl-5">
+      <h4>Hi User!</h4>
+      <button class="col-5 btn btn-outline-info pt-1" routerLink="">חזרה</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row pt-4">
+      <div class="col-md-6 col-12">
+        <div class="header">
+          <div class="headerBox1 p-3">
+
+            <h4>Register - user</h4>
+          </div>
+          <div class="headerBox2 pt-3 pr-5">
+            <h4>צעד-1</h4>
+          </div>
+        </div>
+        <!-- ============================if step 1 not finished====================== -->
+        <div *ngIf="step1 == false ; else other_content">
+          <div class="box" id="box">
+            <div class="offset-1 col-10">
+              <div class="form-group">
+                <label for="exampleInputEmail1">* User name</label>
+                <input type="email" class="form-control col-12" id="UserCheck" value="" aria-describedby="emailHelp"
+                  placeholder="Enter User name" [(ngModel)]="Info1.username" name="usersName">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">* Email address</label>
+                <input type="email" class="form-control col-12" id="EmailCheck" aria-describedby="emailHelp"
+                  placeholder="Enter email" [(ngModel)]="Info1.mail" name="Emails">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">* Password</label>
+                <input type="password" value="" class="form-control col-12" id="exampleInputEmail3"
+                  placeholder="Enter Password" [(ngModel)]="Info1.password" name="Passwords">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">* Password Confirm</label>
+                <input type="password" id="PasswordCheck" class="form-control col-12" placeholder="Enter Password"
+                  [(ngModel)]="Confirm.password" name="PasswordsConfirm">
+              </div>
+              <!-- routerLink="Loginproject2Component" -->
+              <button type="submit" class="btn btn-info offset-4 col-4 " (click)="Regester1()">המשך<i
+                  class='far fa-arrow-alt-circle-right offset-1' style='font-size:24px'></i></button>
+              <!-- routerLink="RegesterComponent" -->
+            </div>
+          </div>
+        </div>
+        <!-- ============================if step 1 finished====================== -->
+        <ng-template #other_content>
+          <div class="notactive" id="box">
+            <div class="offset-1 col-10">
+              <div class="form-group">
+                <label for="exampleInputEmail1">* User name</label>
+                <input type="email" class="form-control col-12" id="UserCheck" value="" aria-describedby="emailHelp"
+                  placeholder="Enter User name" [ngModel]="Info1.username" name="usersName" disabled>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">* Email address</label>
+                <input type="email" class="form-control col-12" id="EmailCheck" aria-describedby="emailHelp"
+                  placeholder="Enter email" [ngModel]="Info1.mail" name="Emails" disabled>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">* Password</label>
+                <input type="password" value="" class="form-control col-12" id="exampleInputEmail3"
+                  placeholder="Enter Password" [ngModel]="Info1.password" name="Passwords" disabled>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">* Password Confirm</label>
+                <input type="password" id="PasswordCheck" class="form-control col-12" placeholder="Enter Password"
+                  [ngModel]="Confirm.password" name="PasswordsConfirm" disabled>
+              </div>
+              <button type="submit" class="btn btn-info offset-4 col-4 " (click)="toggleStep1()">עריכה
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-- ==================================================================== box 2 ============================================== -->
+      <div class="col-md-6 col-12">
+        <div class="header">
+          <div class="headerBox1 p-3">
+
+            <h4>Register - user</h4>
+          </div>
+          <div class="headerBox2 pt-3 pr-5">
+            <h4>צעד-2</h4>
+          </div>
+        </div>
+        <!-- ===========================================================if step 1 not finished ============================================== -->
+
+        <div *ngIf="step1 == false ; else other_content2">
+          <div class="notactive">
+            <div class="offset-1 col-10">
+              <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input value="" name="citychoose" id="srch1" class="form-control col-12" placeholder="Choose City"
+                  list="datalist" [ngModel]="Info2.city" name="city" disabled>
+                <datalist id="datalist">
+                  <select>
+                    <option>Nharia</option>
+                    <option>Ako</option>
+                    <option>Haifa</option>
+                    <option>Natanya</option>
+                    <option>Hertzlea</option>
+                    <option>Tel-Aviv</option>
+                    <option>Reshon-Letzion</option>
+                    <option>Baer-Sheva</option>
+                    <option>Ashkelon</option>
+                    <option>Aelat</option>
+                  </select>
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Street</label>
+                <input type="password" class="form-control col-12" id="exampleInputPassword1" placeholder="Enter Street"
+                  [ngModel]="Info2.street" name="street" disabled>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="email" class="form-control col-12" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter Name" [ngModel]="Info2.name" name="name" disabled>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="password" class="form-control col-12" id="exampleInputPassword1"
+                  placeholder="Enter Last Name" [ngModel]="Info2.lastname" name="lastname" disabled>
+              </div>
+              <!-- <button type="submit" class="btn btn-info offset-4 col-4 " (click)="Regester2()">Finish
+              </button> -->
+            </div>
+          </div>
+        </div>
+        <!-- ===========================================================if step 1 finished ============================================== -->
+
+        <ng-template #other_content2>
+          <div class="box">
+            <div class="offset-1 col-10">
+              <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input value="" name="citychoose" id="srch1" class="form-control col-12" placeholder="Choose City"
+                  list="datalist" [(ngModel)]="Info2.city" name="city">
+                <datalist id="datalist">
+                  <select>
+                    <option>Nharia</option>
+                    <option>Ako</option>
+                    <option>Haifa</option>
+                    <option>Natanya</option>
+                    <option>Hertzlea</option>
+                    <option>Tel-Aviv</option>
+                    <option>Reshon-Letzion</option>
+                    <option>Baer-Sheva</option>
+                    <option>Ashkelon</option>
+                    <option>Aelat</option>
+                  </select>
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Street</label>
+                <input type="text" class="form-control col-12" id="exampleInputPassword1" placeholder="Enter Street"
+                  [(ngModel)]="Info2.street" name="street">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control col-12" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter Name" [(ngModel)]="Info2.name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="text" class="form-control col-12" id="exampleInputPassword1" placeholder="Enter Last Name"
+                  [(ngModel)]="Info2.lastname" name="lastname">
+              </div>
+              <!-- <button type="submit" class="btn btn-info offset-4 col-4 " (click)="Regester2()"
+                routerLink="Loginproject2Component">Finish
+              </button> -->
+              <button type="submit" class="btn btn-info col-12" (click)="Regester2()">סיום ומעבר לחנות</button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+
+
+
+    </div>
+    <!-- <div class="row">
+      <div id="demo" class="offset-4 col-4 mt-5 fade-in">
+
+      </div>
+    </div> -->
+
+  </div>
+</div>

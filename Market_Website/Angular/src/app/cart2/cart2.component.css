@@ -1,0 +1,71 @@
+.fade-in {
+    animation: fadeIn 2S;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#ShippingCheck.active {
+    border: 5px solid rgba(255, 0, 0, 0.486);
+}
+
+.body {
+    background-repeat: no-repeat;
+
+    height: 100%;
+    background-image: url('https://auspost.com.au/content/dam/ia-images/illu-shipping.svg');
+    padding-bottom: 500px;
+    background-size: contain;
+}
+
+.reception {
+    background-color: rgba(0, 0, 0, 0.151);
+    border-radius: 7px;
+}
+
+.topBar1 {
+    width: 100%;
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.151);
+    color: white;
+    /* margin-bottom: 20px; */
+}
+
+.topBar2 {
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.151);
+    color: white;
+    text-align: center;
+    /* margin-bottom: 20px; */
+}
+
+.finishBox {
+    background-color: rgba(0, 0, 0, 0.151);
+    height: 500px;
+    border-radius: 7px;
+}
+
+hr {
+
+    border: 1px solid rgba(0, 0, 0, 0.329);
+
+
+}
+
+.reception:hover {
+    background-color: rgba(63, 81, 95, 0.151);
+
+}
+
+
+.finishBox:hover {
+    background-color: rgba(63, 81, 95, 0.151);
+
+}

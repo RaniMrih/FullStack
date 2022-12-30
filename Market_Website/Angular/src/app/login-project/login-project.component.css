@@ -1,0 +1,111 @@
+.fade-in {
+    animation: fadeIn 2S;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    background-image: url("https://img.newatlas.com/tally-robot-1.jpg?auto=format%2Ccompress&ch=Width%2CDPR&dpr=2&fit=crop&h=540&q=40&rect=0%2C128%2C1620%2C911&w=960&s=55570f32f29da97612be4aa04cb17f0f");
+    padding-bottom: 400px;
+}
+
+.topBar {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    /* margin-bottom: 20px; */
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header1 {
+    width: 100%;
+    height: 80px;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header2 {
+    width: 100%;
+    height: 20%;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.headerBox1 {
+    position: relative;
+    float: left;
+    height: 80px;
+    color: white;
+}
+
+.headerBox2 {
+    position: relative;
+    float: right;
+    height: 80px;
+    font-size: 50px;
+
+}
+
+.box {
+    width: 100%;
+    height: 380px;
+    background-color: rgba(0, 0, 0, 0.322);
+    margin-bottom: 200px;
+    color: white;
+}
+
+.box1 {
+    width: 100%;
+    height: 270px;
+    background-color: rgba(0, 0, 0, 0.322);
+}
+
+.box2 {
+
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.322);
+    color: white;
+
+}
+
+.box:hover,
+.box1:hover,
+.box2:hover,
+.topBar:hover {
+
+    background-color: rgba(23, 39, 110, 0.37);
+
+}
+
+.smallimage {
+    height: 250px;
+    width: 90%;
+}
+
+input {
+    background-color: rgba(240, 248, 255, 0.63);
+    border: none;
+}
+
+/* .box input[type="text"]:hover, .box input[type="password"]:hover{ */

@@ -1,0 +1,97 @@
+<div class="body fade-in">
+  <div class="row ">
+    <div class="col-10 topBar1 mb-5 pt-3 pl-5">
+      <div>
+        <h3>Buy Online</h3>
+        <h6>Your best Online Store for all you need</h6>
+
+      </div>
+    </div>
+    <div class="col-2 topBar2 pt-3 pl-5">
+      <h4>Hi!</h4>
+      <h6>logged as : {{UserName}}</h6>
+      <button class="btn btn-outline-info" routerLink="">Log-Out</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-4">
+        <div class="header">
+          <div class="headerBox1 p-3">
+
+            <h2>LOGIN</h2>
+          </div>
+          <div class="headerBox2 pr-3">
+            <i class="fa fa-lock"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="offset-1 col-10 pt-4">
+            <div class="form-group">
+              <button type="submit" class="btn btn-info col-12 mb-1 mt-2" (click)="Login()">המשך קניה קיימת</button>
+              <label for="exampleInputEmail1">User name</label>
+              <input type="email" class="form-control col-12" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter Username" [ngModel]="UserName" (ngModel)="Info.username" name="usersName" disabled>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control col-12" id="exampleInputPassword1" placeholder="Enter Password"
+                (ngModel)="Info.password" [ngModel]="Password" name="passwords" disabled>
+            </div>
+
+            <div>
+              <h4 style="text-align: center">? נרשמת</h4>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-outline-info offset-1 col-10" (click)="Regester()">הירשם
+                כאן</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ==================================================================== box 1 ============================================== -->
+      <div class="col-4">
+        <div class="offset-1 col-10">
+          <div class="header1 pt-2">
+            <h4>ברוך הבא ל</h4>
+            <h4>Buy Online</h4>
+          </div>
+          <div class="box1">
+            <img class="smallimage pt-3 pl-4"
+              src="https://www.haber3.com/files/2018/11/11/4966453/alisveris-cilginligi-devam-ediyor-85-saniyede-rekorunu-kirdi-kjV.jpg?v=aa1541934333"
+              alt="Smiley face">
+            <img />
+          </div>
+        </div>
+      </div>
+      <!-- ==================================================================== box 2 ============================================== -->
+
+      <div class="col-4">
+        <div class="header2 pt-3">
+          <h4>: כמות מוצרים זמינים באתר</h4>
+          <h3>{{Totalproducts.length + 1}}</h3>
+        </div>
+
+        <div class="box2">
+          <div class="offset-1 col-10 pt-4">
+            <h4 class="mb-3" style="text-align: center">: סה"כ הזמנות באתר</h4>
+            <h1 class="mb-3" style="text-align: center">{{Totalorders.length}}</h1>
+            <hr>
+            <h4 style="text-align: center"> קיימת לך הזמנה פתוחה שלא הושלמה מתאריך </h4>
+            <h4 class="mb-3" style="text-align: center">{{LastDate}}</h4>
+            <hr>
+            <h2 style="text-align: center">₪ {{total}} : סכום</h2>
+          </div>
+          <div>
+            <!-- <button type="submit" class="btn btn-info col-8 offset-2 mt-5">Back to cart</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

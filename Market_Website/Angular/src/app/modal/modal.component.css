@@ -1,0 +1,17 @@
+.myIconA {
+    color: rgb(70, 70, 80);
+    font-size: 35px;
+}
+
+.myIconA:hover {
+    color: rgba(9, 177, 255, 0.945);
+}
+
+.myIconB {
+    color: rgba(255, 93, 93, 0.691);
+    font-size: 30px;
+}
+
+.myIconB:hover {
+    color: rgba(255, 0, 0, 0.945);
+}

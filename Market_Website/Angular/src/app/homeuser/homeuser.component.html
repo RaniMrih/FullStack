@@ -1,0 +1,151 @@
+<div class="body fade-in">
+  <!-----------------------------------------------------header------------------------------------------------------------->
+  <div class="row ">
+    <div class="col-10 topBar1 pb-3 pt-3 pl-5">
+      <div>
+        <h3>Buy Online</h3>
+        <h6>Your best Online Store for all you need</h6>
+        <form class="form-inline my-2 my-lg-0">
+          <input type="text" value="" id="srch1" class="form-control mr-sm-2" style="width: 300px;"
+            placeholder="חיפוש מוצר" list="datalist" [(ngModel)]="Info.product" name="usersName">
+          <button class="btn btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter"
+            (click)="console(this)">Search Product</button>
+        </form>
+        <datalist id="datalist">
+          <select *ngFor="let item of products">
+            <option id="{{item.id}}">{{item.name}}</option>
+          </select>
+        </datalist>
+      </div>
+    </div>
+    <div class="col-2 topBar2 pt-3 pl-5">
+      <h4>Hi!</h4>
+      <h6>logged as : {{UserName}}</h6>
+      <button class="btn btn-outline-info" routerLink="">Log-Out</button>
+    </div>
+  </div>
+  <hr>
+  <!-----------------------------------------------------Categories------------------------------------------------------------->
+  <div class="row">
+    <div class="col-12 pt-1" style="height: 50px;text-align: center">
+      <h3 style="color: rgba(128, 128, 128, 0.733);  font-weight: bold;"> מומלצים </h3>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(153)">מתנות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(5)">אוכל</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(156)">משקאות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(142)">סכינים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(146)">למעשנים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(155)">משחקים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(164)">חיות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(154)">מחזיק מיפתחות</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(160)">פסלים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(9)">שעונים</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(144)">שעוני קיר</button>
+    </div>
+    <div class="col-12 col-md-2 mt-2">
+      <button class="btn btn-outline-info offset-1 col-10 mb-1" (click)="categoryName(15)">טבעות</button>
+    </div>
+    <!-----------------------------------------------------icons------------------------------------------------------------->
+    <div class="row">
+      <div class="arrowicon ml-5">
+        <i class="far fa-share-square arrowicon" (click)="toggleSidebar()"></i>
+        <i class="fas fa-shopping-cart pl-2"></i>
+      </div>
+    </div>
+  </div>
+  <!-----------------------------------------------------Product Cards / Catagory cards------------------------------------------------------------->
+  <div class="row pt-1 fade-in">
+    <div *ngIf="flag ==0 ; else other_content">
+      <!--if flag=0 show all products-->
+      <div id="sidebar" class="col-3 fade-in">
+        <div>
+          <app-cart></app-cart>
+        </div>
+      </div>
+      <div id="sidebar1" class="col-12 fade-in">
+        <div class="row ">
+          <div *ngFor="let item of products" class="col-12 col-md-2 fade-in">
+            <app-card [product]="item"></app-card>
+            <!--go to card component-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #other_content>
+      <div id="sidebar" class="col-3 fade-in">
+        <!--if flag=1 show category products-->
+        <div>
+          <app-cart></app-cart>
+        </div>
+      </div>
+      <div id="sidebar1" class="col-12 fade-in">
+        <div class="row ">
+          <div *ngFor="let item of cat" class="col-12 col-md-2 fade-in">
+            <app-card [product]="item"></app-card>
+            <!--go to card component-->
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<!-- ====================================== Modal card search =========================================================   -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let item of search">
+          <div class="productcard mt-2 mycard3">
+            <div class="col-12 p-0">
+              <div *ngIf="item.imgChanged ==0 ; else other_content">
+                <img src='http://www.mystor.co.il/php/{{item.image}}' class="p-2" alt="..."
+                  style="width: 100%; height: 250px">
+              </div>
+              <ng-template #other_content><img src='{{item.image}}' class="p-2" alt="..."
+                  style="width: 100%; height: 250px">
+              </ng-template>
+              <div class="card-body" style="text-align: center;">
+                <h6 class="card-title">{{item.name}}</h6>
+                <h4 class="card-title"> ₪ מחיר : {{item.new_price}} </h4>
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal" data-toggle="modal"
+                  data-target="#exampleModal2" (click)="storeproduct(this)">הוסף
+                  לעגלה</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
